@@ -19,6 +19,7 @@ yarn build
 ```
 yarn lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 获取后端接口
+```
+openapi --input http://localhost:8104/api//v2/api-docs --output ./backapi --client axios
+```
