@@ -23,63 +23,66 @@
         </a-menu>
       </div>
     </a-col>
-    <a-dropdown trigger="hover">
-      <a-avatar shape="circle">
+    <a-space size="large">
+      <a-dropdown trigger="hover">
         <template
           v-if="loginUser && loginUser.userRole !== AccessEnum.NOT_LOGIN"
         >
           <template v-if="loginUser.userAvatar">
-            <img alt="avatar" :src="loginUser.userAvatar" class="userAvatar" />
+            <a-avatar shape="circle" :image-url="loginUser.userAvatar">
+            </a-avatar>
           </template>
           <template v-else>
-            <a-avatar>
+            <a-avatar shape="circle">
               <IconUser />
             </a-avatar>
           </template>
         </template>
         <template v-else>
-          <a-avatar>未登录</a-avatar>
+          <a-avatar shape="circle" :style="{ backgroundColor: '#14a9f8' }"
+            >Cat OJ
+          </a-avatar>
         </template>
-      </a-avatar>
-      <template #content>
-        <template v-if="loginUser.userRole !== AccessEnum.NOT_LOGIN">
-          <a-doption>
-            <template #icon>
-              <icon-idcard />
-            </template>
-            <template #default>
-              <a-anchor-link>个人信息</a-anchor-link>
-            </template>
-          </a-doption>
-          <a-doption>
-            <template #icon>
-              <icon-poweroff />
-            </template>
-            <template #default>
-              <a-anchor-link @click="logout">退出登录</a-anchor-link>
-            </template>
-          </a-doption>
+        <template #content>
+          <template v-if="loginUser.userRole !== AccessEnum.NOT_LOGIN">
+            <a-doption>
+              <template #icon>
+                <icon-idcard />
+              </template>
+              <template #default>
+                <a-anchor-link href="/user/info">个人信息</a-anchor-link>
+              </template>
+            </a-doption>
+            <a-doption>
+              <template #icon>
+                <icon-poweroff />
+              </template>
+              <template #default>
+                <a-anchor-link @click="logout">退出登录</a-anchor-link>
+              </template>
+            </a-doption>
+          </template>
+          <template v-else>
+            <a-doption>
+              <template #icon>
+                <icon-user />
+              </template>
+              <template #default>
+                <a-anchor-link href="/user/login">登录</a-anchor-link>
+              </template>
+            </a-doption>
+            <a-doption>
+              <template #icon>
+                <icon-user />
+              </template>
+              <template #default>
+                <a-anchor-link href="/user/register">注册</a-anchor-link>
+              </template>
+            </a-doption>
+          </template>
         </template>
-        <template v-else>
-          <a-doption>
-            <template #icon>
-              <icon-user />
-            </template>
-            <template #default>
-              <a-anchor-link href="/user/login">登录</a-anchor-link>
-            </template>
-          </a-doption>
-          <a-doption>
-            <template #icon>
-              <icon-user />
-            </template>
-            <template #default>
-              <a-anchor-link href="/user/register">注册</a-anchor-link>
-            </template>
-          </a-doption>
-        </template>
-      </template>
-    </a-dropdown>
+      </a-dropdown>
+    </a-space>
   </a-row>
 </template>
 
@@ -157,11 +160,12 @@ const doMenuClick = (key: string) => {
 
 .title {
   color: #444;
-  margin-left: 10px;
+  margin-left: 15px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .logo {
-  line-height: 32px;
-  height: 32px;
+  height: 35px;
 }
 </style>

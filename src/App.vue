@@ -17,7 +17,6 @@
 import BasicLayout from "@/layouts/BasicLayout";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
-import UserLayout from "@/layouts/UserLayout.vue";
 
 const route = useRoute();
 
