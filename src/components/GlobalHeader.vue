@@ -40,7 +40,7 @@
         </template>
         <template v-else>
           <a-avatar shape="circle" :style="{ backgroundColor: '#14a9f8' }"
-            >Cat OJ
+            >未登录
           </a-avatar>
         </template>
         <template #content>

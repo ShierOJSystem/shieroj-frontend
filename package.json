@@ -8,8 +8,20 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@bytemd/plugin-breaks": "^1.21.0",
+    "@bytemd/plugin-frontmatter": "^1.21.0",
+    "@bytemd/plugin-gemoji": "^1.21.0",
+    "@bytemd/plugin-gfm": "^1.21.0",
+    "@bytemd/plugin-highlight": "^1.21.0",
+    "@bytemd/plugin-highlight-ssr": "^1.21.0",
+    "@bytemd/plugin-math": "^1.21.0",
+    "@bytemd/vue-next": "^1.21.0",
     "axios": "^1.4.0",
+    "bytemd": "^1.21.0",
     "core-js": "^3.8.3",
+    "highlight.js": "^11.8.0",
+    "monaco-editor": "^0.41.0",
+    "monaco-editor-webpack-plugin": "^7.1.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"

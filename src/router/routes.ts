@@ -1,12 +1,13 @@
 import { RouteRecordRaw } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
-import AdminView from "@/views/AdminView.vue";
-import NoAuthView from "@/views/NoAuthView.vue";
+import ExampleView from "@/views/ExampleView.vue";
+import NoAuthView from "@/views/state/NoAuthView.vue";
 import UserLoginView from "@/views/user/UserLoginView.vue";
 import UserInfoView from "@/views/user/UserInfoView.vue";
 import UserRegisterView from "@/views/user/UserRegisterView.vue";
 import ACCESS_ENUM from "@/access/accessEnum";
 import UserLayout from "@/layouts/UserLayout.vue";
+import AddQuestionView from "@/views/question/AddQuestionView.vue";
+import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
 
 /**
  * @author Shier
@@ -40,8 +41,33 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/",
-    name: "浏览题目",
-    component: HomeView,
+    name: "首页",
+    component: ExampleView,
+  },
+  {
+    path: "/question/add",
+    name: "创建题目",
+    component: AddQuestionView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/question/update",
+    name: "更新题目题目",
+    component: AddQuestionView,
+    meta: {
+      hideInMenu: true,
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/question/manage",
+    name: "管理题目",
+    component: ManageQuestionView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
   },
   {
     path: "/noAuth",
@@ -52,20 +78,20 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/admin",
-    name: "管理员可见",
-    component: AdminView,
+    path: "/about",
+    name: "关于我的",
+    component: () => import("../views/AboutView.vue"),
+  },
+  {
+    path: "/404",
+    name: "404",
+    component: () => import("../views/state/404View.vue"),
     meta: {
-      access: ACCESS_ENUM.ADMIN,
+      hideInMenu: true,
     },
   },
   {
-    path: "/about",
-    name: "关于我的",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/:pathMatch(.*)", // 匹配所有路由
+    redirect: "/404",
   },
 ];

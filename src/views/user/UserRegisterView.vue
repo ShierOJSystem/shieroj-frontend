@@ -93,7 +93,7 @@ const handleSubmit = async () => {
   if (res.code === 0) {
     // 获取到用户信息之后再跳转到主页
     await store.dispatch("user/getLoginUser");
-    router.push({
+    await router.push({
       path: "/user/login",
       replace: true,
     });

@@ -3,6 +3,17 @@
  * @createTime 2023/8/24 星期四 17:13
  */
 import axios from "axios";
+import { OpenAPI } from "../../backapi";
+
+// 携带凭证
+OpenAPI.WITH_CREDENTIALS = true;
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8104"
+    : "http://oj.kongshier.top";
+
+OpenAPI.BASE = baseUrl;
+console.log("当前环境：", process.env.NODE_ENV, "请求地址", baseUrl);
 
 // 添加请求拦截器
 axios.interceptors.request.use(
