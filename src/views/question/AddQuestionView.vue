@@ -18,10 +18,10 @@
     >
       <a-form-item
         field="title"
-        label="题目标题："
-        tooltip="建议填写题目标题"
+        label="题目："
+        tooltip="建议填写题目"
         required
-        :rules="[{ required: true, message: '题目标题是必填的' }]"
+        :rules="[{ required: true, message: '题目是必填的' }]"
       >
         <a-input
           v-model="form.title"
@@ -327,6 +327,11 @@ const onAnswerChange = (value: string) => {
   max-width: 1000px;
   background: linear-gradient(to right, #efefef, #fff, #efefef);
   border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(35, 7, 7, 0.21);
+}
+
+.arco-form-item-label-col-left {
+  justify-content: flex-end;
 }
 
 :deep(.bytemd-fullscreen.bytemd) {

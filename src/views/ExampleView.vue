@@ -11,7 +11,13 @@ import MdEditor from "@/components/MdEditor.vue";
 import CodeEditor from "@/components/CodeEditor.vue"; // @ is an alias to /src
 
 const mdValue = ref();
-const codeValue = ref();
+const codeValue = ref(
+  "public class Main {\n" +
+    "    public static void main(String[] args) {\n" +
+    '        System.out.println("Hello, World!");\n' +
+    "    }\n" +
+    "}\n"
+);
 
 const onMdChange = (v: string) => {
   mdValue.value = v;

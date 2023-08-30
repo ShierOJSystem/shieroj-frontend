@@ -1,13 +1,15 @@
 import { RouteRecordRaw } from "vue-router";
-import ExampleView from "@/views/ExampleView.vue";
 import NoAuthView from "@/views/state/NoAuthView.vue";
 import UserLoginView from "@/views/user/UserLoginView.vue";
 import UserInfoView from "@/views/user/UserInfoView.vue";
+import ExampleView from "@/views/ExampleView.vue";
 import UserRegisterView from "@/views/user/UserRegisterView.vue";
 import ACCESS_ENUM from "@/access/accessEnum";
 import UserLayout from "@/layouts/UserLayout.vue";
 import AddQuestionView from "@/views/question/AddQuestionView.vue";
 import ManageQuestionView from "@/views/question/ManageQuestionView.vue";
+import QuestionsView from "@/views/question/QuestionsView.vue";
+import ViewQuestionsView from "@/views/question/ViewQuestionView.vue";
 
 /**
  * @author Shier
@@ -42,7 +44,28 @@ export const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "首页",
+    component: QuestionsView,
+  },
+  {
+    path: "/example",
+    name: "示例",
     component: ExampleView,
+    meta: { hideInMenu: true },
+  },
+  {
+    path: "/questions",
+    name: "浏览题目",
+    component: QuestionsView,
+  },
+  {
+    path: "/question/view/:id",
+    name: "在线做题",
+    component: ViewQuestionsView,
+    props: true,
+    meta: {
+      access: ACCESS_ENUM.USER,
+      hideInMenu: true,
+    },
   },
   {
     path: "/question/add",
@@ -54,7 +77,7 @@ export const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/question/update",
-    name: "更新题目题目",
+    name: "更新题目",
     component: AddQuestionView,
     meta: {
       hideInMenu: true,
@@ -69,6 +92,7 @@ export const routes: Array<RouteRecordRaw> = [
       access: ACCESS_ENUM.ADMIN,
     },
   },
+
   {
     path: "/noAuth",
     name: "无权限",
@@ -78,9 +102,9 @@ export const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: "/about",
-    name: "关于我的",
-    component: () => import("../views/AboutView.vue"),
+    path: "/introduce",
+    name: "OJ介绍",
+    component: () => import("../views/SystemIntroduceView.vue"),
   },
   {
     path: "/404",

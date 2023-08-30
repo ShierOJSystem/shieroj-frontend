@@ -39,8 +39,8 @@
           </template>
         </template>
         <template v-else>
-          <a-avatar shape="circle" :style="{ backgroundColor: '#14a9f8' }"
-            >未登录
+          <a-avatar shape="circle" :style="{ backgroundColor: '#3370ff' }">
+            <IconUser />
           </a-avatar>
         </template>
         <template #content>

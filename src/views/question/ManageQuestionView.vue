@@ -13,11 +13,25 @@
         showPageSize: true,
       }"
       @page-change="onPageChange"
+      @pageSizeChange="onPageSizeChange"
     >
       <template #optional="{ record }">
         <a-space>
           <a-button type="primary" @click="doUpdate(record)">修改</a-button>
-          <a-button status="danger" @click="doDelete(record)">删除</a-button>
+          <a-popconfirm
+            content="确定要删除此题目吗?"
+            type="error"
+            okText="是"
+            cancelText="否"
+            @cancel="
+              () => {
+                console.log(`取消删除`);
+              }
+            "
+            @ok="doDelete(record)"
+          >
+            <a-button status="danger">删除</a-button>
+          </a-popconfirm>
         </a-space>
       </template>
     </a-table>
@@ -148,10 +162,25 @@ const columns = [
   },
 ];
 
+/**
+ * 分页
+ * @param page
+ */
 const onPageChange = (page: number) => {
   searchParams.value = {
     ...searchParams.value,
     current: page,
+  };
+};
+
+/**
+ * 分页大小
+ * @param size
+ */
+const onPageSizeChange = (size: number) => {
+  searchParams.value = {
+    ...searchParams.value,
+    pageSize: size,
   };
 };
 
@@ -189,5 +218,7 @@ const doUpdate = (question: Question) => {
 
 <style scoped>
 #manageQuestionView {
+  box-shadow: 0px 0px 10px rgba(35, 7, 7, 0.21);
+  border-radius: 10px;
 }
 </style>
