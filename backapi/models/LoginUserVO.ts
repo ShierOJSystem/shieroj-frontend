@@ -9,7 +9,7 @@ export type LoginUserVO = {
   gender?: string;
   id?: number;
   phone?: string;
-  token?: string;
+  // token?: string;
   updateTime?: string;
   userAccount?: string;
   userAvatar?: string;

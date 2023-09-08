@@ -50,8 +50,10 @@
       <template #acceptedRate="{ record }">
         {{
           `${
-            record.submitNum > 0 ? record.acceptedNum / record.submitNum : "0"
-          }% (${record.acceptedNum}/${record.submitNum})`
+            record.submitNum > 0
+              ? (record.acceptedNum / record.submitNum) * 100
+              : "0"
+          } % (${record.acceptedNum}/${record.submitNum})`
         }}
       </template>
       <template #createTime="{ record }">
@@ -59,7 +61,12 @@
       </template>
       <template #optional="{ record }">
         <a-space>
-          <a-button type="primary" @click="toQuestionPage(record)">
+          <a-button
+            shape="round"
+            status="normal"
+            type="primary"
+            @click="toQuestionPage(record)"
+          >
             做题
           </a-button>
         </a-space>

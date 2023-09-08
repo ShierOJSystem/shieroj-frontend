@@ -62,7 +62,7 @@
         shape="round"
         type="primary"
         html-type="submit"
-        @submit="handleSubmit"
+        @click="handleSubmit"
       >
         新 手 注 册
       </a-button>

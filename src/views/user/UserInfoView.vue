@@ -71,7 +71,6 @@
         status="success"
         size="small"
         type="outline"
-        @click="openModalForm"
         style="margin: 10px"
       >
         <a-link @click="toIndex">首页</a-link>
@@ -161,7 +160,7 @@ const uploadAvatar = async () => {
   );
   if (res.code === 0) {
     userAvatarImg = res.data;
-    Message.success("上传成功！");
+    Message.success("上传成功，点击确认即可修改头像");
   } else {
     Message.error("上传失败！" + res.data);
   }
@@ -183,7 +182,7 @@ const handleOk = async () => {
   if (res.code === 0) {
     Message.success("更新成功！");
     visible.value = false;
-    // location.reload();
+    location.reload();
   } else {
     Message.error("更新失败！", res.msg);
   }

@@ -4,6 +4,7 @@ import UserLoginView from "@/views/user/UserLoginView.vue";
 import UserInfoView from "@/views/user/UserInfoView.vue";
 import ExampleView from "@/views/ExampleView.vue";
 import UserRegisterView from "@/views/user/UserRegisterView.vue";
+import UserManageView from "@/views/user/UserManageView.vue";
 import ACCESS_ENUM from "@/access/accessEnum";
 import UserLayout from "@/layouts/UserLayout.vue";
 import AddQuestionView from "@/views/question/AddQuestionView.vue";
@@ -62,7 +63,7 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/question/view/:id",
     name: "在线做题",
     component: ViewQuestionsView,
-    props: true,
+    props: true, // 开启接收动态id
     meta: {
       access: ACCESS_ENUM.USER,
       hideInMenu: true,
@@ -89,6 +90,14 @@ export const routes: Array<RouteRecordRaw> = [
     path: "/question/manage",
     name: "管理题目",
     component: ManageQuestionView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/manage/user",
+    name: "用户管理",
+    component: UserManageView,
     meta: {
       access: ACCESS_ENUM.ADMIN,
     },
