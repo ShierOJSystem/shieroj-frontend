@@ -7,11 +7,12 @@ import router from "@/router";
 import store from "@/store";
 import ACCESS_ENUM from "@/access/accessEnum";
 import checkAccess from "@/access/checkAccess";
-import { Message } from "@arco-design/web-vue";
 import message from "@arco-design/web-vue/es/message";
 
 router.beforeEach(async (to, from, next) => {
   let loginUser = store.state.user.loginUser;
+  // 获取后端的token
+  // console.log("token", localStorage.getItem("token"));
   // 如果之前没登陆过，自动登录
   if (!loginUser || !loginUser.userRole) {
     // 加 await 是为了等用户登录成功之后，再执行后续的代码
@@ -37,6 +38,5 @@ router.beforeEach(async (to, from, next) => {
       return;
     }
   }
-  console.log("登录信息：", store.state.user?.loginUser);
   next();
 });

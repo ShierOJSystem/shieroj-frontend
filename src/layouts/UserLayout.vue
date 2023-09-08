@@ -5,7 +5,7 @@
         <a-space>
           <img src="../assets/logo.png" class="logo" />
           <div style="margin-left: 15px; font-size: 25px; font-weight: bold">
-            猫 OJ
+            猫 OJ 在线判题系统
           </div>
         </a-space>
       </a-layout-header>
@@ -14,9 +14,11 @@
       </a-layout-content>
       <a-layout-footer class="footer"
         ><a href="https://github.com/kongshier" target="_blank">
-          ShierOJ 猫十二懿</a
+          Cat OJ By 猫十二懿</a
         >
-        <a href="javascript:" target="_blank"> 备案号</a>
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">
+          桂ICP备2023002099号
+        </a>
       </a-layout-footer>
     </a-layout>
   </div>

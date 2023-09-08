@@ -15,9 +15,7 @@ export default {
     },
   }),
   actions: {
-    async getLoginUser({ commit, state }, payload) {
-      // 模拟登录
-      // commit("updateUser", payload);
+    async getLoginUser({ commit, state }) {
       // 从远程请求获取登录信息
       const res = await UserControllerService.getLoginUserUsingGet();
       if (res.code === 0) {

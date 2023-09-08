@@ -1,12 +1,11 @@
 <template>
   <div id="userLoginView">
-    <h1 style="margin-bottom: 16px">登录猫 OJ 判题系统</h1>
+    <h1 style="margin: 32px 0">登录 猫 OJ 判题系统</h1>
     <a-form
       style="max-width: 320px; margin: 0 auto"
       label-align="left"
       auto-label-width
       :model="form"
-      @submit="handleSubmit"
     >
       <a-form-item
         required
@@ -27,16 +26,37 @@
           placeholder="请输入密码"
         />
       </a-form-item>
-      <a-form-item>
-        <a-button
-          style="margin: 25px; width: 150px"
-          type="primary"
-          html-type="submit"
-        >
-          登 录
-        </a-button>
-      </a-form-item>
     </a-form>
+    <a-space wrap>
+      <a-button
+        size="large"
+        shape="round"
+        type="secondary"
+        status="success"
+        @click="toIndex"
+      >
+        首 页
+      </a-button>
+      <a-button
+        style="width: 120px; margin: 16px"
+        size="large"
+        shape="round"
+        type="primary"
+        html-type="submit"
+        @click="handleSubmit"
+      >
+        登 录
+      </a-button>
+      <a-button
+        size="large"
+        shape="round"
+        type="outline"
+        status="success"
+        @click="toRegister"
+      >
+        注 册
+      </a-button>
+    </a-space>
   </div>
 </template>
 
@@ -67,6 +87,8 @@ const handleSubmit = async () => {
   // 登录成功，跳转到主页
   if (res.code === 0) {
     await store.dispatch("user/getLoginUser");
+    // 将token保存在localStorage中
+    localStorage.setItem("token", res.data.token);
     router.push({
       path: "/",
       replace: true,
@@ -75,5 +97,20 @@ const handleSubmit = async () => {
   } else {
     message.error("登陆失败，" + res.message);
   }
+};
+/**
+ * 回到首页
+ * @param question
+ */
+const toIndex = () => {
+  router.push({
+    path: `/`,
+  });
+};
+
+const toRegister = () => {
+  router.push({
+    path: `/user/register`,
+  });
 };
 </script>

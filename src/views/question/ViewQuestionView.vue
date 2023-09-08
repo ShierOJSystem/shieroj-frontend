@@ -45,10 +45,7 @@
           >
             <a-select v-model="form.submitLanguage" placeholder="选择编程语言">
               <a-option>java</a-option>
-              <a-option>cpp</a-option>
-              <a-option>c#</a-option>
-              <a-option>go</a-option>
-              <a-option>python</a-option>
+              <a-option disabled>敬请其他更多语言</a-option>
             </a-select>
           </a-form-item>
         </a-form>
@@ -77,7 +74,6 @@ import { onMounted, ref, withDefaults, defineProps } from "vue";
 import {
   QuestionControllerService,
   QuestionSubmitAddRequest,
-  QuestionSubmitControllerService,
   QuestionVO,
 } from "../../../backapi";
 import message from "@arco-design/web-vue/es/message";
@@ -114,7 +110,9 @@ const loadData = async () => {
 const codeDefaultValue = ref(
   "public class Main {\n" +
     "    public static void main(String[] args) {\n" +
-    '        System.out.println("Hello, World!");\n' +
+    "        int a = Integer.parseInt(args[0]);\n" +
+    "        int b = Integer.parseInt(args[1]);\n" +
+    "        System.out.println(a + b);\n" +
     "    }\n" +
     "}\n"
 );
@@ -132,12 +130,12 @@ const doSubmit = async () => {
     return;
   }
 
-  const res = await QuestionSubmitControllerService.doQuestionSubmitUsingPost({
+  const res = await QuestionControllerService.doQuestionSubmitUsingPost({
     ...form.value,
     questionId: question.value.id,
   });
   if (res.code === 0) {
-    message.success("提交成功");
+    message.success("提交成功，请到已提交题目界面查看");
   } else {
     message.error("提交失败," + res.message);
   }

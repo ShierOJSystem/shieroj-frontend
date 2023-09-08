@@ -9,9 +9,11 @@
       </a-layout-content>
       <a-layout-footer class="footer"
         ><a href="https://github.com/kongshier" target="_blank">
-          ShierOj By 猫十二懿</a
+          Cat OJ By 猫十二懿</a
         >
-        <a href="javascript:" target="_blank"> 备案号</a>
+        <a href="https://beian.miit.gov.cn/#/Integrated/index" target="_blank">
+          桂ICP备2023002099号
+        </a>
       </a-layout-footer>
     </a-layout>
   </div>

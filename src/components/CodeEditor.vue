@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<Props>(), {
   value: () => "",
   language: () => "java",
   handleChange: (v: string) => {
-    console.log("当前值：", v);
+    // console.log("当前值：", v);
   },
 });
 

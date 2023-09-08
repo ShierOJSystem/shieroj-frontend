@@ -26,7 +26,7 @@ yarn add monaco-editor
 yarn add monaco-editor-webpack-plugin 
 ```
 
-### 获取后端接口
+### 获取后端代码接口
 ```
 openapi --input http://localhost:8104/api//v2/api-docs --output ./backapi --client axios
 ```

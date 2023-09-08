@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<Props>(), {
   value: () => "",
   mode: () => "split",
   handleChange: (v: string) => {
-    console.log(v);
+    // console.log(v);
     return "";
   },
 });

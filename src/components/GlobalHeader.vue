@@ -104,8 +104,6 @@ const loginUser: LoginUserVO = computed(
   () => store.state.user?.loginUser
 ) as LoginUserVO;
 
-console.log("用户信息", loginUser);
-
 // 过滤显示菜单的路由数组
 const visibleRoutes = computed(() => {
   return routes.filter((item, index) => {
