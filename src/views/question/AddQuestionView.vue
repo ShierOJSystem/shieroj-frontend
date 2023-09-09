@@ -8,7 +8,10 @@
         margin-bottom: 16px;
       "
     >
-      创建题目
+      <template v-if="route.path.startsWith('/question/update')">
+        修改题目信息
+      </template>
+      <template v-else>创建题目</template>
     </div>
     <a-form
       :model="form"

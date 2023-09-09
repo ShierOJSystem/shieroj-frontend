@@ -1,5 +1,5 @@
 <template>
-  <div id="manageQuestionView">
+  <div id="userManageView">
     <a-form
       :model="searchParams"
       layout="inline"
@@ -394,7 +394,7 @@ const onChange = async (_: never, currentFile: FileItem) => {
 </script>
 
 <style scoped>
-#manageQuestionView {
+#userManageView {
   padding: 5px;
   box-shadow: 0px 0px 10px rgba(35, 7, 7, 0.21);
   border-radius: 10px;

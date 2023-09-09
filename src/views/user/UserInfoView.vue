@@ -117,6 +117,10 @@ const data = [
     value: loginUser.userAccount,
   },
   {
+    label: "我的简介：",
+    value: loginUser.userProfile,
+  },
+  {
     label: "用户角色：",
     value: loginUser.userRole === "user" ? "普通用户" : "管理员",
   },

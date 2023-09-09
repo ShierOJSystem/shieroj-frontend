@@ -31,6 +31,7 @@ axios.interceptors.request.use(
 //   (config) => {
 //     // 假设token存在localStorage中
 //     const token = localStorage.getItem("token");
+//     console.log("token:", token);
 //     if (token) {
 //       config.headers.Authorization = token;
 //     }
