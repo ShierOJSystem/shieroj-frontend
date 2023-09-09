@@ -12,7 +12,7 @@ import message from "@arco-design/web-vue/es/message";
 router.beforeEach(async (to, from, next) => {
   let loginUser = store.state.user.loginUser;
   // 获取后端的token
-  // console.log("token", localStorage.getItem("token"));
+  console.log("获取的token", localStorage.getItem("token"));
   // 如果之前没登陆过，自动登录
   if (!loginUser || !loginUser.userRole) {
     // 加 await 是为了等用户登录成功之后，再执行后续的代码
