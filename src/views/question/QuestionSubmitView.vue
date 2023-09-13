@@ -62,7 +62,7 @@
             size="medium"
             v-for="(info, index) of record.judgeInfo"
             :key="index"
-            color="green"
+            :color="colors[index.length % colors.length]"
           >
             {{
               `${
@@ -81,7 +81,10 @@
         {{ moment(record.createTime).format("YYYY-MM-DD HH:mm:ss") }}
       </template>
       <template #questionId="{ record }">
-        <a-link status="success" @click="toQuestionPage(record)"
+        <a-link
+          status="success"
+          style="color: blue"
+          @click="toQuestionPage(record)"
           >{{ record.questionId }}
         </a-link>
       </template>
@@ -99,7 +102,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from "vue";
 import {
-  Question,
   QuestionControllerService,
   QuestionSubmitQueryRequest,
 } from "../../../backapi";
@@ -117,6 +119,8 @@ const searchParams = ref<QuestionSubmitQueryRequest>({
   pageSize: 10,
   current: 1,
 });
+
+const colors = ["orange", "green", "blue", "red"];
 
 const loadData = async () => {
   const res = await QuestionControllerService.listQuestionSubmitByPageUsingPost(

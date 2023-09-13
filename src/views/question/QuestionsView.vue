@@ -50,10 +50,12 @@
       <template #acceptedRate="{ record }">
         {{
           `${
-            record.submitNum > 0
-              ? (record.acceptedNum / record.submitNum) * 100
-              : "0"
-          } % (${record.acceptedNum}/${record.submitNum})`
+            Math.round(
+              (record.submitNum > 0
+                ? (record.acceptedNum / record.submitNum) * 100
+                : "0" * 100) * 100
+            ) / 100
+          }% (${record.acceptedNum}/${record.submitNum})`
         }}
       </template>
       <template #createTime="{ record }">
@@ -97,6 +99,7 @@ const searchParams = ref<QuestionQueryRequest>({
   current: 1,
 });
 
+console.log("小数：", Math.round(5.111111 * 100) / 100);
 const loadData = async () => {
   const res = await QuestionControllerService.listQuestionVoByPageUsingPost({
     ...searchParams.value,

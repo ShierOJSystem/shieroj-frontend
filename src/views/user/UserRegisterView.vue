@@ -108,7 +108,7 @@ const handleSubmit = async () => {
     });
     message.success("注册成功！");
   } else {
-    message.error("注册失败！", res.message);
+    message.error("注册失败！" + res.message);
   }
 };
 /**

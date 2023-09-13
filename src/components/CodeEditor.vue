@@ -80,7 +80,7 @@ onMounted(() => {
     props.handleChange(toRaw(codeEditor.value).getValue());
   });
 
-  // todo 代码提示
+  // 代码提示
   monaco.languages.registerCompletionItemProvider("java", {
     provideCompletionItems: function (model, position) {
       // 获取当前行数

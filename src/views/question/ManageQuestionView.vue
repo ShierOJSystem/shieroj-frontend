@@ -44,6 +44,14 @@
       @page-change="onPageChange"
       @pageSizeChange="onPageSizeChange"
     >
+      <template #id="{ record }">
+        <a-link
+          status="normal"
+          style="color: blue"
+          @click="toQuestionPage(record)"
+          >{{ record.id }}
+        </a-link>
+      </template>
       <template #tags="{ record }">
         <a-space wrap>
           <a-tag
@@ -70,6 +78,18 @@
               }`
             }}
             {{ "：" + config }}
+          </a-tag>
+        </a-space>
+      </template>
+      <template #judgeCase="{ record }">
+        <a-space wrap>
+          <a-tag
+            v-for="(config, index) of JSON.parse(record.judgeCase)"
+            :key="index"
+            color="blue"
+            >示例{{ index + 1 }}: 输入：{{ config.input }} ，输出：{{
+              config.output
+            }}
           </a-tag>
         </a-space>
       </template>
@@ -102,7 +122,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from "vue";
-import { Question, QuestionControllerService } from "../../../backapi/index";
+import {
+  Question,
+  QuestionControllerService,
+  QuestionSubmitQueryRequest,
+} from "../../../backapi/index";
 import message from "@arco-design/web-vue/es/message";
 
 import { useRouter } from "vue-router";
@@ -119,8 +143,6 @@ const searchParams = ref({
   current: 1,
   content: "",
 });
-// 创建一个数组来存储获取到的用户信息
-// const userInfos = [];
 
 const loadData = async () => {
   const res = await QuestionControllerService.listQuestionByPageUsingPost({
@@ -153,7 +175,7 @@ onMounted(() => {
 const columns = [
   {
     title: "题号",
-    dataIndex: "id",
+    slotName: "id",
     align: "center",
   },
   {
@@ -199,8 +221,9 @@ const columns = [
   },
   {
     title: "判题用例",
-    dataIndex: "judgeCase",
+    slotName: "judgeCase",
     align: "center",
+    width: 120,
   },
   {
     title: "创建时间",
@@ -252,6 +275,16 @@ const doDelete = async (question: Question) => {
 };
 
 const router = useRouter();
+
+/**
+ * 跳转到做题页面
+ * @param question
+ */
+const toQuestionPage = (questionId: QuestionSubmitQueryRequest) => {
+  router.push({
+    path: `/question/view/${questionId.questionId}`,
+  });
+};
 
 /**
  * 修改 / 更新操作
